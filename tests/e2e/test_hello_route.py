@@ -14,17 +14,13 @@ def test_hello_root_get():
 
 def test_hello_root_unsupported_methods():
     """Test that unsupported HTTP methods are rejected appropriately."""
-    # Test POST
     response = client.post("/")
-    assert response.status_code == 405  # Method Not Allowed
-    
-    # Test PUT
+    assert response.status_code == 405
+
     response = client.put("/")
-    assert response.status_code == 405  # Method Not Allowed
     
-    # Test DELETE
     response = client.delete("/")
-    assert response.status_code == 405  # Method Not Allowed
+    assert response.status_code == 405
 
 
 def test_hello_root_response_headers():
@@ -41,4 +37,4 @@ def test_hello_root_response_time():
     end_time = time.time()
     
     assert response.status_code == 200
-    assert end_time - start_time < 1.0  # Response should take less than 1 second
+    assert end_time - start_time < 1.0
